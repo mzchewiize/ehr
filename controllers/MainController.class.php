@@ -17,7 +17,7 @@ class MainController{
         $loader = new Twig_Loader_Filesystem("views/templates");
         $this->twig = new Twig_Environment($loader);
 
-        $this->template = "main.html.twig";
+        $this->template = "mainLayout.html.twig";
         $this->binding = array(
             "incHeader" => "header.html.twig",
             "incBody" => "home.html.twig",
