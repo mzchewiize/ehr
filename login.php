@@ -6,7 +6,7 @@ require_once("models/LoginModel.class.php");
 require_once("controllers/MainController.class.php");
 require_once("controllers/LoginController.class.php");
 
-$model = new LoginModel($_CONF, $_POST);
+$model = new LoginModel($_CONF, $_T, $_POST);
 $ctrl = new LoginController($model);
 
 echo $ctrl->render();

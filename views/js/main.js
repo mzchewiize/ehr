@@ -8,6 +8,7 @@ emrMain.init = function(){
 
 	emrMain.initModal();
 	emrMain.initLogout();
+	emrMain.initLang();
 };
 
 emrMain.initModal = function(){
@@ -32,6 +33,21 @@ emrMain.initLogout = function(){
 			}else{
 				alert("Logout failed");
 			}
+		});
+	});
+};
+
+emrMain.initLang = function(){
+	$(".lang").click(function(){
+	
+		var params = {
+			req: "setLang",
+			lang: $(this).attr("id")
+		};
+		
+		emrMain.modal.trigger('openModal');
+		emrMain.request(params, function(data){
+			location.reload();
 		});
 	});
 };

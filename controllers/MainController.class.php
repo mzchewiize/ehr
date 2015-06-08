@@ -6,6 +6,7 @@ class MainController{
     protected $twig;
     protected $binding;
     protected $template;
+	protected $t;
 
     protected function init($m){
 
@@ -14,6 +15,8 @@ class MainController{
         );
 
         $this->model = $m;
+		$this->t = $this->model->getLang();
+		
         $loader = new Twig_Loader_Filesystem("views/templates");
         $this->twig = new Twig_Environment($loader);
 
@@ -22,7 +25,7 @@ class MainController{
             "incHeader" => "header.html.twig",
             "incBody" => "home.html.twig",
             "incFooter" => "footer.html.twig",
-            "title" => "Electronic Health Records",
+            "title" => $this->t->main->title,
             "js" => "home"
         );
     }

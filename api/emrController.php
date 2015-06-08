@@ -22,6 +22,12 @@ if($req == "login"){
 	
 	$return['error'] = 0;
 	unset($_SESSION['user']);
+	unset($_SESSION['lang']);
+
+}else if($req == "setLang"){
+	
+	$return['error'] = 0;
+	$_SESSION['lang'] = $_POST['lang'];
 
 }
 

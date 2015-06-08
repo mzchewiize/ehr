@@ -2,8 +2,8 @@
 
 class HomeModel extends MainModel {
 
-	public function __construct($conf, $post){
-        $this->init($conf, $post);
+	public function __construct($conf, $lang, $post){
+        $this->init($conf, $lang, $post);
     }
 
 }
