@@ -5,7 +5,7 @@ $_CONF = (object)array(
 		"host" => "localhost",
 		"username" => "root",
 		"password" => "",
-		"dbName" => "ehr"
+		"dbName" => "emr"
 	),
 	"dbPrd" => (object)array(
 		"host" => "http://prd",
