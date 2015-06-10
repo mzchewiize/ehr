@@ -5,11 +5,11 @@ class DatabaseServices{
     private $conn;
 
     protected function init($databaseConf){
-	
-        $this->conn = new mysqli($databaseConf->host, $databaseConf->username, $databaseConf->password, $databaseConf->dbName);
+ 
+        $this->conn = new mysqli($databaseConf['host'], $databaseConf['username'], $databaseConf['password'], $databaseConf['dbName']);
 
         if($this->conn->connect_errno){
-            error_log("Connect failed : ". $mysqli->connect_error);
+            error_log("Connect failed : ". $this->conn->connect_error);
         }
     }
 

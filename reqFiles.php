@@ -2,14 +2,15 @@
 session_start();
 require_once("vendor/autoload.php");
 
+$_CONF = parse_ini_file("conf.ini", true);
+
 if($_SESSION['lang'] == ""){
 	$lang = "langEN";
 }else{
 	$lang = $_SESSION['lang'];
 }
 
-$_CONF = json_decode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/ehr/conf.json"));
-$_T = json_decode(file_get_contents("http://".$_SERVER['HTTP_HOST']."/ehr/lang/".$lang.".json"));
+$_T = json_decode(file_get_contents($_CONF['info']['rootDir']."/lang/".$lang.".json"));
 
 $url = explode("/", $_SERVER['PHP_SELF']);
 $fileName = $url[count($url)-1];

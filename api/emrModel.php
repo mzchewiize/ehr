@@ -2,7 +2,7 @@
 require_once("../reqFiles.php");
 require_once("../services/DatabaseServices.class.php");
 
-$db = new DatabaseServices($_CONF->dbStg);
+$db = new DatabaseServices($_CONF['dbStg']);
 
 function emrLogin($params){
 	global $db;

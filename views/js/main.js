@@ -5,10 +5,9 @@ $(function(){
 });
 
 emrMain.init = function(){
-
 	emrMain.initModal();
 	emrMain.initLogout();
-	emrMain.initLang();
+	emrMain.initChangeLang();
 };
 
 emrMain.initModal = function(){
@@ -37,7 +36,7 @@ emrMain.initLogout = function(){
 	});
 };
 
-emrMain.initLang = function(){
+emrMain.initChangeLang = function(){
 	$(".lang").click(function(){
 	
 		var params = {

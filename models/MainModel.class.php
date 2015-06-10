@@ -8,12 +8,13 @@ class MainModel{
 	protected $t;
 
     protected function init($conf, $lang, $post){
+
         require_once(__DIR__."/../services/DatabaseServices.class.php");
 
 		$this->conf = $conf;
 		$this->t = $lang;
 		$this->post = $post;
-        $this->db = new DatabaseServices($this->conf->dbStg);
+        $this->db = new DatabaseServices($this->conf['dbStg']);
         
     }
 
