@@ -26,6 +26,7 @@ class MainController{
             "incBody" => "home.html.twig",
             "incFooter" => "footer.html.twig",
             "title" => $this->t->main->title,
+            "lang" => $this->t->lang,
             "js" => "home"
         );
     }

@@ -1,23 +1,36 @@
 emrMain = {};
 
 $(function(){
-    emrMain.init();
+
+    var lang = $("#lang").attr("class");
+    
+    $.ajax({
+		url: "lang/"+lang+".json",
+		dataType: "json",
+		type: 'POST',
+		success: function(lang){
+            emrMain.init(lang);
+		},
+        error: function(jqXHR, textStatus, errorThrown){
+			alert("Error occur, Please try again later.");    
+        }
+	});
 });
 
-emrMain.init = function(){
-	emrMain.initModal();
-	emrMain.initLogout();
-	emrMain.initChangeLang();
+emrMain.init = function(t){
+	emrMain.initModal(t);
+	emrMain.initLogout(t);
+	emrMain.initChangeLang(t);
 };
 
-emrMain.initModal = function(){
+emrMain.initModal = function(t){
 	emrMain.modal = $("#pleaseWait").easyModal({
         overlay : 0.4,
         overlayClose: false
     });
 };
 
-emrMain.initLogout = function(){
+emrMain.initLogout = function(t){
 	$("#logout").click(function(){
 	
 		var params = {
@@ -25,33 +38,32 @@ emrMain.initLogout = function(){
 		};
 		
 		emrMain.modal.trigger('openModal');
-		emrMain.request(params, function(data){
+		emrMain.request(t, params, function(data){
 			emrMain.modal.trigger('closeModal');
 			if(data.error == 0){
 				location.href = "index.php";
 			}else{
-				alert("Logout failed");
+				alert(t.main.logoutFail);
 			}
 		});
 	});
 };
 
-emrMain.initChangeLang = function(){
-	$(".lang").click(function(){
-	
+emrMain.initChangeLang = function(t){
+	$(".lang").click(function(){	
 		var params = {
 			req: "setLang",
 			lang: $(this).attr("id")
 		};
 		
 		emrMain.modal.trigger('openModal');
-		emrMain.request(params, function(data){
+		emrMain.request(t, params, function(data){
 			location.reload();
 		});
 	});
 };
 
-emrMain.request = function(params, callback){
+emrMain.request = function(t, params, callback){
 	$.ajax({
 		url: "api/emrController.php",
 		data: params,
@@ -62,7 +74,7 @@ emrMain.request = function(params, callback){
 		},
         error: function(jqXHR, textStatus, errorThrown){
 			emrMain.modal.trigger('closenModal');
-			alert("Error occur, Please try again later.");    
+		    alert(t.main.ajaxError);    
         }
 	});
 };

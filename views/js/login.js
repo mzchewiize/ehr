@@ -1,16 +1,27 @@
 emrLogin = {};
 
 $(function(){
-    emrLogin.init();
+
+    var lang = $("#lang").attr("class");
+    
+    $.ajax({
+		url: "lang/"+lang+".json",
+		dataType: "json",
+		type: 'POST',
+		success: function(lang){
+            emrLogin.init(lang);
+		},
+        error: function(jqXHR, textStatus, errorThrown){
+			alert("Error occur, Please try again later.");    
+        }
+	});
 });
 
-emrLogin.init = function(){
-
-	emrLogin.initForm();
-	
+emrLogin.init = function(t){
+	emrLogin.initForm(t);
 };
 
-emrLogin.initForm = function(){
+emrLogin.initForm = function(t){
         
 	$loginForm = $("#loginForm");
 	
@@ -26,13 +37,13 @@ emrLogin.initForm = function(){
 		
 		emrMain.modal.trigger('openModal');
 		
-		if(emrLogin.validateForm(username, password)){
-			emrMain.request(params, function(data){
+		if(emrLogin.validateForm(t, username, password)){
+			emrMain.request(t, params, function(data){
 				emrMain.modal.trigger('closeModal');
 				if(data.error == 0){
 					location.href = "index.php";
 				}else{
-					alert("Authentication failed");
+					alert(t.login.authFail);
 				}
 			});
 		}else{
@@ -41,13 +52,13 @@ emrLogin.initForm = function(){
 	});
 };
 
-emrLogin.validateForm = function(u, p){
+emrLogin.validateForm = function(t, u, p){
 	
 	if(u == ""){
-		alert("Please input username.");
+		alert(t.login.usernameEmpty);
 		return false;
 	}else if(p == ""){
-		alert("Please input password.");
+		alert(t.login.passwordEmpty);
 		return false;
 	}
 	
