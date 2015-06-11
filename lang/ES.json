@@ -1,0 +1,14 @@
+{
+    "lang": "ES",
+	"main": {
+		"title": "titleES",
+        "logoutFail": "logoutFailES",
+        "ajaxError": "Error occur, Please try again later.ES"
+	},
+	"home": {},
+	"login": {
+		"authFail": "Authentication failed.ES",
+        "usernameEmpty": "Please input username.ES",
+        "passwordEmpty": "Please input password.ES"
+	}
+}

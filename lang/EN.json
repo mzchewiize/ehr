@@ -1,0 +1,14 @@
+{
+    "lang": "EN",
+	"main": {
+		"title": "Electronic Health Records",
+        "logoutFail": "Logout Fail.",
+        "ajaxError": "Error occur, Please try again later."
+	},
+	"home": {},
+	"login": {
+		"authFail": "Authentication failed.",
+        "usernameEmpty": "Please input username.",
+        "passwordEmpty": "Please input password."
+	}
+}
